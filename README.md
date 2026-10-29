@@ -8,15 +8,6 @@ This repository benchmarks three QA pipelines on a 1200-query JSONL dataset:
 
 The benchmark produces automatic metrics, LLM-as-a-judge metrics, retrieval quality metrics, failure analysis, and charts.
 
-## Repository Structure
-
-- `src/main.py`: end-to-end run pipeline (load data, build DB, run pipelines, write outputs)
-- `src/evaluate.py`: EM/F1, retrieval metrics, and LLM judge scoring
-- `configs/`: run presets
-- `data/`: input datasets
-- `evaluation/`: generated outputs
-- `ARCHITECTURE.md`, `FLOWCHARTS.md`: design + flow documentation
-
 ## Pipeline Behavior (Current Implementation)
 
 ### Baseline
@@ -102,47 +93,6 @@ python src/main.py --config configs/benchmark.low_budget.yaml
 Demo run Youtube video:
 
 https://youtu.be/znjkSgxNDRI
-
-
-## Re-run Note
-
-Due to minor code changes made close to the submission window, Experiments 1 and 2 should be re-run so that the reported artifacts fully reflect the latest implementation. The re-run was not completed before deadline because of time constraints.
-
-## Save Results Per Experiment
-
-After each run, copy the generated files from `evaluation/` into the matching archive directory.
-
-Run Experiment 1 and archive outputs:
-
-```bash
-python src/main.py --config configs/experiment1.yaml
-mkdir -p evaluation/charts/Experiment1/charts
-cp evaluation/agentic_rag_responses.txt evaluation/charts/Experiment1/
-cp evaluation/analysis_report.md evaluation/charts/Experiment1/
-cp evaluation/baseline_responses.txt evaluation/charts/Experiment1/
-cp evaluation/evaluation_results.csv evaluation/charts/Experiment1/
-cp evaluation/failure_cases.csv evaluation/charts/Experiment1/
-cp evaluation/failure_mode_summary.csv evaluation/charts/Experiment1/
-cp evaluation/query_level_scores.csv evaluation/charts/Experiment1/
-cp evaluation/simple_rag_responses.txt evaluation/charts/Experiment1/
-cp evaluation/charts/* evaluation/charts/Experiment1/charts/
-```
-
-Run Experiment 2 and archive outputs:
-
-```bash
-python src/main.py --config configs/experiment2.yaml
-mkdir -p evaluation/charts/Experiment2/charts
-cp evaluation/agentic_rag_responses.txt evaluation/charts/Experiment2/
-cp evaluation/analysis_report.md evaluation/charts/Experiment2/
-cp evaluation/baseline_responses.txt evaluation/charts/Experiment2/
-cp evaluation/evaluation_results.csv evaluation/charts/Experiment2/
-cp evaluation/failure_cases.csv evaluation/charts/Experiment2/
-cp evaluation/failure_mode_summary.csv evaluation/charts/Experiment2/
-cp evaluation/query_level_scores.csv evaluation/charts/Experiment2/
-cp evaluation/simple_rag_responses.txt evaluation/charts/Experiment2/
-cp evaluation/charts/* evaluation/charts/Experiment2/charts/
-```
 
 ## Config Keys
 
